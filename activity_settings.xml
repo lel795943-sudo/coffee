@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center_horizontal">
+
+    <!-- IP 输入区域 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="机器人 IP 地址："
+        android:textSize="16sp"
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:id="@+id/editText_ip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="例如：192.168.119.130"
+        android:inputType="textUri"
+        android:layout_marginTop="8dp"/>
+
+    <!-- 端口输入区域 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="端口号："
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/editText_port"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="例如：8686"
+        android:inputType="number"
+        android:layout_marginTop="8dp"/>
+
+    <!-- 连接状态指示灯区域 -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="30dp">
+
+        <!-- 指示灯（圆形） -->
+        <View
+            android:id="@+id/connection_indicator"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:background="@drawable/circle_shape"
+            android:layout_marginEnd="10dp"/>
+
+        <!-- 状态文本 -->
+        <TextView
+            android:id="@+id/connection_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="未连接"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <!-- 按钮区域 -->
+    <Button
+        android:id="@+id/button_test_connection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="测试连接"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="保存设置"
+        android:layout_marginTop="15dp"/>
+
+</LinearLayout>

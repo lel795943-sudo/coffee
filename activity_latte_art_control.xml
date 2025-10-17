@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false">
+
+    <!-- 顶部状态栏 -->
+    <LinearLayout android:id="@+id/status_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView android:id="@+id/connection_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="连接状态: 未连接" />
+    </LinearLayout>
+
+    <!-- 中间：左侧控制面板 (ScrollView, 占70%宽度) -->
+    <ScrollView android:id="@+id/control_scroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/log_scroll"
+        app:layout_constraintEnd_toStartOf="@+id/image_view"
+        app:layout_constraintHorizontal_weight="7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/status_bar">
+        <LinearLayout android:id="@+id/control_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- 连接控制 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="服务器IP:" />
+            <EditText android:id="@+id/ip_entry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="192.168.1.124" />
+            <Button android:id="@+id/connect_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="连接" />
+            <Button android:id="@+id/disconnect_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="断开" />
+
+            <!-- TCP控制 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TCP通信" />
+            <Button android:id="@+id/send_1_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="发送1到TCP客户端"
+                android:enabled="false" />
+            <Button android:id="@+id/query_status_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="查询状态并发送10(空闲时)" />
+
+            <!-- 图片操作 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="图片处理" />
+            <Button android:id="@+id/prepare_image_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="使用最新图片" />
+            <Button android:id="@+id/select_image_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="选择图片" />
+            <Button android:id="@+id/validate_image_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="校验图片大小" />
+
+            <!-- 打印控制 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="打印控制" />
+            <EditText android:id="@+id/cup_size_entry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="杯径 (40-100mm)"
+                android:inputType="number"
+                android:text="46" />
+            <Button android:id="@+id/send_print_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="发送打印任务" />
+            <Button android:id="@+id/pre_raise_tray_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="托盘预上升" />
+            <Button android:id="@+id/get_tray_status_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="查询托盘状态" />
+
+            <!-- 状态查询 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="状态查询" />
+            <Button android:id="@+id/get_machine_status_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="查询机器状态" />
+            <Button android:id="@+id/get_print_info_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="查询打印信息" />
+            <Button android:id="@+id/get_ink_info_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="查询墨盒信息" />
+
+            <!-- 系统设置 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="系统设置" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText android:id="@+id/alert_count_entry"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="墨盒提醒值"
+                    android:inputType="number" />
+                <Button android:id="@+id/set_ink_alert_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设置" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText android:id="@+id/current_count_entry"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="当前打印次数"
+                    android:inputType="number" />
+                <Button android:id="@+id/set_current_count_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设置" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText android:id="@+id/height_entry"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="定高值 (0=自动)"
+                    android:inputType="number" />
+                <Button android:id="@+id/set_fixed_height_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设置" />
+            </LinearLayout>
+            <CheckBox android:id="@+id/height_switch_cb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="定高开关" />
+            <CheckBox android:id="@+id/cartridge_control_cb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="墨盒管控" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 右侧图片预览 (占30%宽度) -->
+    <ImageView android:id="@+id/image_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:background="#f0f0f0"
+        app:layout_constraintBottom_toTopOf="@+id/log_scroll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="3"
+        app:layout_constraintStart_toEndOf="@+id/control_scroll"
+        app:layout_constraintTop_toBottomOf="@+id/status_bar" />
+
+    <!-- 底部日志 (自适应剩余空间，避免溢出) -->
+    <ScrollView android:id="@+id/log_scroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_view">
+        <TextView android:id="@+id/log_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textIsSelectable="true"
+            android:textSize="12sp" />
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
